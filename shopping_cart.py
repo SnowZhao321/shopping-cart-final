@@ -75,4 +75,10 @@ print("#> GREEN FOODS GROCERY")
 print("#> WWW.GREEN-FOODS-GROCERY.COM")
 print("---------------------------------")
 
+# using datetime module
+import datetime;
+ct = datetime.datetime.now()
+ct = ct.strftime("%Y-%m-%d, %H:%M:%S") # Y-m-d H:M:S format
+print("CHECKOUT AT:", ct)
+
 print("TOTAL PRICE: " + str(total_price))
