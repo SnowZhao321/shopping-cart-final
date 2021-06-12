@@ -70,4 +70,9 @@ for selected_id in selected_ids:
     total_price = total_price + matching_product["price"]
     print("SELECTED PRODUCTS: " + matching_product["name"] + " " + str(matching_product["price"]))
 
+print("---------------------------------")
+print("#> GREEN FOODS GROCERY")
+print("#> WWW.GREEN-FOODS-GROCERY.COM")
+print("---------------------------------")
+
 print("TOTAL PRICE: " + str(total_price))
