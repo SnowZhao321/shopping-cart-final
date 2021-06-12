@@ -49,7 +49,7 @@ selected_ids = []
 
 while True:
     selected_id = input("Please input a product identifier, or 'DONE' if there are no more items:") #> "9" (string)
-    if selected_id == "DONE":
+    if selected_id.upper() == "DONE":
         break
     else:
         if int(selected_id) not in list(range(1,20)):
