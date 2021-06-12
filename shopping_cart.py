@@ -52,6 +52,9 @@ while True:
     if selected_id == "DONE":
         break
     else:
+        if int(selected_id) not in list(range(1,20)):
+            print ("Please input item identifier 1-20. Please start over.")
+            exit()
         #matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
         #matching_product = matching_products[0]
         #total_price = total_price + matching_product["price"]
