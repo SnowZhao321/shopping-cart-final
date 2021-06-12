@@ -15,3 +15,5 @@ Run the program:
 ```py
 python shopping_cart.py
 ```
+Follow the program instruction to input item identifier 1-20 or DONE when finish. When DONE is input, a receipt with item details, total price and tax will be printed. 
+
