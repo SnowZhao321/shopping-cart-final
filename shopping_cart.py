@@ -84,5 +84,5 @@ print("---------------------------------")
 print("Subtotal: " + to_usd(total_price))
 taxrate=0.0875
 tax=total_price*taxrate
-print("Tax: " + to_usd(tax))
-print("Total: " + to_usd(tax+total_price))
+print("Tax: " + to_usd(tax)) # tax
+print("Total: " + to_usd(tax+total_price)) # total price including tax
