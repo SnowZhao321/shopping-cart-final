@@ -41,3 +41,14 @@ def to_usd(my_price):
 
 print(products)
 
+
+# INFO CAPTURE / INPUT
+
+selected_id = input("Please input a product identifier:") #> "9" (string)
+print(selected_id)
+print(type(selected_id))
+
+
+
+# INFO DISPLAY / OUTPUT
+
