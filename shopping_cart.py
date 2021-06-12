@@ -48,7 +48,7 @@ total_price = 0
 selected_ids = []
 
 while True:
-    selected_id = input("Please input a product identifier:") #> "9" (string)
+    selected_id = input("Please input a product identifier, or 'DONE' if there are no more items:") #> "9" (string)
     if selected_id == "DONE":
         break
     else:
