@@ -1,3 +1,9 @@
+import os 
+import dotenv
+dotenv.load_dotenv()
+
+TAX_RATE = os.getenv("TAXRATE")
+
 # shopping_cart.py
 
 products = [
@@ -82,7 +88,7 @@ for selected_id in selected_ids:
     print("..." + matching_product["name"] + " " + to_usd(matching_product["price"]))
 print("---------------------------------")
 print("Subtotal: " + to_usd(total_price))
-taxrate=0.0875
-tax=total_price*taxrate
+#taxrate=0.0875
+tax=total_price*TAX_RATE
 print("Tax: " + to_usd(tax)) # tax
 print("Total: " + to_usd(tax+total_price)) # total price including tax
