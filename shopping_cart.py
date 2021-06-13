@@ -70,25 +70,30 @@ while True:
 
 
 
-print("---------------------------------")
-print("#> GREEN FOODS GROCERY")
-print("#> WWW.GREEN-FOODS-GROCERY.COM")
-print("---------------------------------")
-# using datetime module
+receipt="---------------------------------\n" + "GREEN FOODS GROCERY\n" + "WWW.GREEN-FOODS-GROCERY.COM\n" + "---------------------------------\n"
+
+# date and time
 import datetime;
 ct = datetime.datetime.now()
-ct = ct.strftime("%Y-%m-%d, %H:%M:%S") # Y-m-d H:M:S format
-print("CHECKOUT AT:", ct)
-print("---------------------------------")
-print("SELECTED PRODUCTS:")
+ct = ct.strftime("%Y-%m-%d %H:%M:%S") # Y-m-d H:M:S format
+receipt = receipt + "CHECKOUT AT: " + ct + "\n---------------------------------\n"
+
+# list items and price 
+receipt = receipt + "SELECTED PRODUCTS:\n" 
 for selected_id in selected_ids:
     matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
     matching_product = matching_products[0]
     total_price = total_price + matching_product["price"]
-    print("..." + matching_product["name"] + " " + to_usd(matching_product["price"]))
-print("---------------------------------")
-print("Subtotal: " + to_usd(total_price))
-#taxrate=0.0875
-tax=total_price*TAX_RATE
-print("Tax: " + to_usd(tax)) # tax
-print("Total: " + to_usd(tax+total_price)) # total price including tax
+    receipt = receipt + "..." + matching_product["name"] + " " + to_usd(matching_product["price"]) + "\n"
+
+receipt = receipt + "---------------------------------\n"
+receipt = receipt + "Subtotal: " + to_usd(total_price) + "\n"
+tax=total_price*float(TAX_RATE)
+receipt = receipt + "Tax: " + to_usd(tax) + "\n"
+receipt = receipt + "Total: " + to_usd(tax+total_price) + "\n"
+print(receipt)
+
+#Writing Receipts to File
+filename = "./receipt/" + ct + ".txt"
+with open(filename, "w") as file: # "w" means "open the file for writing"
+    file.write(receipt)
