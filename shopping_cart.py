@@ -60,7 +60,7 @@ while True:
     if selected_id.upper() == "DONE":
         break
     else:
-        if int(selected_id) not in list(range(1,20)):
+        if int(selected_id) not in list(range(1,21)):
             print ("Please input item identifier 1-20. Please start over.")
             exit()
         #matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
