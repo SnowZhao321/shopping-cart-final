@@ -101,3 +101,4 @@ print(receipt)
 filename = "./receipt/" + ct + ".txt"
 with open(filename, "w") as file: # "w" means "open the file for writing"
     file.write(receipt)
+
