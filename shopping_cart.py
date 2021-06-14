@@ -84,13 +84,17 @@ for selected_id in selected_ids:
     matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
     matching_product = matching_products[0]
     total_price = total_price + matching_product["price"]
-    receipt = receipt + "..." + matching_product["name"] + " " + to_usd(matching_product["price"]) + "\n"
+    receipt = receipt + "..." + matching_product["name"] + " (" + to_usd(matching_product["price"]) + ")\n"
 
 receipt = receipt + "---------------------------------\n"
 receipt = receipt + "Subtotal: " + to_usd(total_price) + "\n"
 tax=total_price*float(TAX_RATE)
 receipt = receipt + "Tax: " + to_usd(tax) + "\n"
 receipt = receipt + "Total: " + to_usd(tax+total_price) + "\n"
+# Thanks message
+receipt = receipt + "---------------------------------\n"
+receipt = receipt + "THANKS, SEE YOU AGAIN SOON!\n"
+receipt = receipt + "---------------------------------\n"
 print(receipt)
 
 #Writing Receipts to File
