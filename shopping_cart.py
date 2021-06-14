@@ -1,6 +1,8 @@
 import os 
 import dotenv
 dotenv.load_dotenv()
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 TAX_RATE = os.getenv("TAXRATE")
 
@@ -102,3 +104,35 @@ filename = "./receipt/" + ct + ".txt"
 with open(filename, "w") as file: # "w" means "open the file for writing"
     file.write(receipt)
 
+# Send receipt to customer email
+def sendemail(email):
+    SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY", default="OOPS, please set env var called 'SENDGRID_API_KEY'")
+    SENDER_ADDRESS = os.getenv("SENDER_ADDRESS", default="OOPS, please set env var called 'SENDER_ADDRESS'")
+
+    client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
+    print("CLIENT:", type(client))
+
+    subject = "Your Receipt from the Green Grocery Store"
+
+    html_content = receipt
+    print("HTML:", html_content)
+
+    # FYI: we'll need to use our verified SENDER_ADDRESS as the `from_email` param
+    # ... but we can customize the `to_emails` param to send to other addresses
+    message = Mail(from_email=SENDER_ADDRESS, to_emails=email, subject=subject, html_content=html_content)
+
+    try:
+        response = client.send(message)
+
+        print("RESPONSE:", type(response)) #> <class 'python_http_client.client.Response'>
+        print(response.status_code) #> 202 indicates SUCCESS
+        print(response.body)
+        print(response.headers)
+
+    except Exception as err:
+        print(type(err))
+        print(err)
+
+email = input("Do you want a copy of receipt to your email address? If yes, please input your email. If no, please input no:\n") 
+if email != "no":
+    sendemail(email)
